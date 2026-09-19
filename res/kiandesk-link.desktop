@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=KianDesk
+NoDisplay=true
+MimeType=x-scheme-handler/kiandesk;
+TryExec=kiandesk
+Exec=kiandesk %u
+Icon=kiandesk
+Terminal=false
+Type=Application
+StartupNotify=false
+StartupWMClass=kiandesk
