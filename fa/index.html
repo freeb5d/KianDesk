@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KianDesk — Your Remote Desktop</title>
-<meta name="description" content="KianDesk is a fast, secure, self-hosted remote desktop client and server.">
+<title>KianDesk — دسکتاپ ریموت شما</title>
+<meta name="description" content="KianDesk یک کلاینت و سرور دسکتاپ ریموت، سریع، امن و خوداستقرار است.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css" rel="stylesheet">
 <style>
   :root {
     --bg: #06070f;
@@ -19,14 +21,14 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Vazirmatn", -apple-system, "Segoe UI", Tahoma, sans-serif;
     background: var(--bg);
     background-image:
-      radial-gradient(900px 480px at 15% -10%, rgba(59, 99, 255, 0.18), transparent 60%),
-      radial-gradient(900px 480px at 85% 0%, rgba(94, 198, 255, 0.12), transparent 60%);
+      radial-gradient(900px 480px at 85% -10%, rgba(59, 99, 255, 0.18), transparent 60%),
+      radial-gradient(900px 480px at 15% 0%, rgba(94, 198, 255, 0.12), transparent 60%);
     background-repeat: no-repeat;
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.8;
     -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; text-decoration: none; }
@@ -38,7 +40,7 @@
     align-items: center;
     padding: 26px 0;
   }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
   .brand img { width: 30px; height: 30px; border-radius: 8px; display: block; }
   nav { display: flex; align-items: center; gap: 8px; }
   nav a {
@@ -78,7 +80,7 @@
   .lang-menu {
     position: absolute;
     top: calc(100% + 8px);
-    right: 0;
+    left: 0;
     min-width: 140px;
     background: var(--card);
     border: 1px solid var(--border);
@@ -131,10 +133,9 @@
     box-shadow: 0 24px 60px -12px rgba(59, 99, 255, 0.45);
   }
   .hero h1 {
-    font-size: 52px;
+    font-size: 46px;
     font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+    line-height: 1.3;
     margin-bottom: 22px;
   }
   .hero h1 .accent {
@@ -146,7 +147,7 @@
   .hero p.tagline {
     font-size: 18px;
     color: var(--muted);
-    max-width: 560px;
+    max-width: 580px;
     margin: 0 auto 40px;
   }
   .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 96px; }
@@ -157,7 +158,7 @@
     padding: 13px 24px;
     border-radius: 10px;
     font-weight: 600;
-    font-size: 14.5px;
+    font-size: 15px;
     transition: transform .15s, filter .15s, border-color .15s;
   }
   .btn:active { transform: scale(0.98); }
@@ -180,15 +181,12 @@
     color: var(--accent2);
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     margin-bottom: 12px;
   }
   h2.section-title {
     text-align: center;
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 700;
-    letter-spacing: -0.02em;
     margin-bottom: 56px;
   }
 
@@ -218,8 +216,8 @@
     margin-bottom: 20px;
   }
   .feature .icon svg { width: 20px; height: 20px; stroke: var(--accent2); }
-  .feature h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em; }
-  .feature p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+  .feature h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .feature p { color: var(--muted); font-size: 14px; line-height: 1.8; }
   .feature p a { color: var(--accent2); font-weight: 500; }
   .feature p a:hover { text-decoration: underline; }
 
@@ -250,9 +248,9 @@
   .repo-card .icon svg { width: 20px; height: 20px; stroke: var(--text); }
   .repo-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
   .repo-card p { color: var(--muted); font-size: 14px; margin-bottom: 4px; }
-  .repo-card .arrow { margin-left: auto; opacity: 0.4; transition: opacity .15s, transform .15s; }
-  .repo-card:hover .arrow { opacity: 1; transform: translateX(2px); }
-  .repo-card .arrow svg { width: 18px; height: 18px; stroke: var(--text); }
+  .repo-card .arrow { margin-right: auto; opacity: 0.4; transition: opacity .15s, transform .15s; }
+  .repo-card:hover .arrow { opacity: 1; transform: translateX(-2px); }
+  .repo-card .arrow svg { width: 18px; height: 18px; stroke: var(--text); transform: scaleX(-1); }
 
   footer {
     border-top: 1px solid var(--border);
@@ -275,9 +273,9 @@
     .wrap { padding: 0 20px; }
     nav { display: none; }
     .hero { margin-top: 48px; }
-    .hero h1 { font-size: 36px; }
+    .hero h1 { font-size: 32px; }
     .hero p.tagline { font-size: 16px; }
-    h2.section-title { font-size: 26px; margin-bottom: 40px; }
+    h2.section-title { font-size: 24px; margin-bottom: 40px; }
     section.features, section.repos { padding-bottom: 64px; }
   }
 </style>
@@ -286,86 +284,86 @@
   <div class="wrap">
     <header>
       <a class="brand" href="#">
-        <img src="logo-icon.png" alt="KianDesk logo">
+        <img src="logo-icon.png" alt="لوگوی KianDesk">
         KianDesk
       </a>
       <nav>
-        <a href="#features">Features</a>
-        <a href="#repos">Repositories</a>
+        <a href="#features">امکانات</a>
+        <a href="#repos">مخازن کد</a>
         <div class="lang-switch">
           <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            EN
+            فا
           </button>
           <div class="lang-menu" id="langMenu">
-            <a href="index.html">English</a>
-            <a href="fa/index.html">فارسی</a>
-            <a href="ar/index.html">العربية</a>
-            <a href="zh/index.html">中文</a>
+            <a href="../index.html">English</a>
+            <a href="../fa/index.html">فارسی</a>
+            <a href="../ar/index.html">العربية</a>
+            <a href="../zh/index.html">中文</a>
           </div>
         </div>
-        <a class="nav-cta" href="https://github.com/freeb5d/KianDesk/releases">Download</a>
+        <a class="nav-cta" href="https://github.com/freeb5d/KianDesk/releases">دانلود</a>
       </nav>
     </header>
 
     <section class="hero">
       <img class="logo" src="logo-icon.png" alt="KianDesk">
-      <span class="badge"><span class="dot"></span> Self-hosted &amp; open source</span>
-      <h1>Your remote desktop,<br><span class="accent">under your control</span></h1>
+      <span class="badge"><span class="dot"></span> خوداستقرار و متن‌باز</span>
+      <h1>دسکتاپ ریموت شما،<br><span class="accent">تحت کنترل کامل شما</span></h1>
       <p class="tagline">
-        KianDesk is a fast, secure remote desktop client built on Rust.
-        Connect through your own server — no third parties, no compromises.
+        KianDesk یک کلاینت دسکتاپ ریموت سریع و امن است که با Rust ساخته شده است.
+        از طریق سرور اختصاصی خودتان متصل شوید — بدون واسطه، بدون مصالحه.
       </p>
       <div class="cta">
         <a class="btn btn-primary" href="https://github.com/freeb5d/KianDesk/releases">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download KianDesk
+          دانلود KianDesk
         </a>
         <a class="btn btn-secondary" href="https://github.com/freeb5d/KianDesk">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          View on GitHub
+          مشاهده در گیت‌هاب
         </a>
       </div>
     </section>
 
     <section class="features" id="features">
-      <span class="section-label">Why KianDesk</span>
-      <h2 class="section-title">Built for control and speed</h2>
+      <span class="section-label">چرا KianDesk</span>
+      <h2 class="section-title">ساخته‌شده برای کنترل و سرعت</h2>
       <div class="feature-grid">
         <div class="feature">
           <div class="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
-          <h3>Full data control</h3>
-          <p>Connects only to your own self-hosted server — your sessions never pass through a third party.</p>
+          <h3>کنترل کامل داده</h3>
+          <p>فقط به سرور اختصاصی خودتان متصل می‌شود — جلسات شما هرگز از طریق شخص ثالث عبور نمی‌کند.</p>
         </div>
         <div class="feature">
           <div class="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <h3>Fast &amp; lightweight</h3>
-          <p>A Rust core keeps latency low, paired with a Flutter interface that feels native everywhere.</p>
+          <h3>سریع و سبک</h3>
+          <p>هسته Rust تأخیر را پایین نگه می‌دارد، همراه با رابط Flutter که در همه‌جا حس بومی دارد.</p>
         </div>
         <div class="feature">
           <div class="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
-          <h3>Cross platform</h3>
-          <p>Native builds for Windows, macOS, Linux, Android, and iOS from a single codebase.</p>
+          <h3>چندسکویی</h3>
+          <p>نسخه‌های بومی برای ویندوز، مک، لینوکس، اندروید و iOS از یک کدبیس واحد.</p>
         </div>
         <div class="feature">
           <div class="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           </div>
-          <h3>Self-hosted server</h3>
-          <p>Run your own <a href="https://github.com/freeb5d/KianDesk-Server">KianDesk-Server</a> for complete independence and control.</p>
+          <h3>سرور اختصاصی</h3>
+          <p>سرور <a href="https://github.com/freeb5d/KianDesk-Server">KianDesk-Server</a> خودتان را اجرا کنید برای استقلال و کنترل کامل.</p>
         </div>
       </div>
     </section>
 
     <section class="repos" id="repos">
-      <span class="section-label">Source code</span>
-      <h2 class="section-title">Open on GitHub</h2>
+      <span class="section-label">کد منبع</span>
+      <h2 class="section-title">باز روی گیت‌هاب</h2>
       <div class="repo-grid">
         <a class="repo-card" href="https://github.com/freeb5d/KianDesk">
           <div class="icon">
@@ -373,7 +371,7 @@
           </div>
           <div>
             <h3>KianDesk</h3>
-            <p>The desktop and mobile client application.</p>
+            <p>برنامه کلاینت دسکتاپ و موبایل.</p>
           </div>
           <div class="arrow">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
@@ -385,7 +383,7 @@
           </div>
           <div>
             <h3>KianDesk-Server</h3>
-            <p>Self-hosted rendezvous and relay server.</p>
+            <p>سرور رندوو و رله خوداستقرار.</p>
           </div>
           <div class="arrow">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
@@ -402,9 +400,9 @@
         KianDesk
       </div>
       <div class="links">
-        <a href="https://github.com/freeb5d/KianDesk">Client</a>
-        <a href="https://github.com/freeb5d/KianDesk-Server">Server</a>
-        <a href="https://github.com/freeb5d/KianDesk/releases">Releases</a>
+        <a href="https://github.com/freeb5d/KianDesk">کلاینت</a>
+        <a href="https://github.com/freeb5d/KianDesk-Server">سرور</a>
+        <a href="https://github.com/freeb5d/KianDesk/releases">نسخه‌ها</a>
       </div>
     </div>
   </footer>
