@@ -1,0 +1,47 @@
+# arg 1:  the new package version
+#pre_install() {
+#}
+
+# arg 1:  the new package version
+post_install() {
+	# do something here
+	cp /usr/share/kiandesk/files/kiandesk.service /etc/systemd/system/kiandesk.service
+	cp /usr/share/kiandesk/files/kiandesk.desktop /usr/share/applications/
+	cp /usr/share/kiandesk/files/kiandesk-link.desktop /usr/share/applications/
+	systemctl daemon-reload
+	systemctl enable kiandesk
+	systemctl start kiandesk
+	update-desktop-database
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+    systemctl stop kiandesk || true
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	cp /usr/share/kiandesk/files/kiandesk.service /etc/systemd/system/kiandesk.service
+	cp /usr/share/kiandesk/files/kiandesk.desktop /usr/share/applications/
+	cp /usr/share/kiandesk/files/kiandesk-link.desktop /usr/share/applications/
+	systemctl daemon-reload
+	systemctl enable kiandesk
+	systemctl start kiandesk
+	update-desktop-database
+}
+
+# arg 1:  the old package version
+pre_remove() {
+	systemctl stop kiandesk || true
+	systemctl disable kiandesk || true
+	rm /etc/systemd/system/kiandesk.service || true
+}
+
+# arg 1:  the old package version
+post_remove() {
+	rm /usr/share/applications/kiandesk.desktop || true
+	rm /usr/share/applications/kiandesk-link.desktop || true
+	update-desktop-database
+}
