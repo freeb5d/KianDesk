@@ -96,13 +96,19 @@ class _DesktopTabPageState extends State<DesktopTabPage> {
             backgroundColor: Theme.of(context).colorScheme.background,
             body: DesktopTab(
               controller: tabController,
-              tail: Offstage(
-                offstage: bind.isIncomingOnly() || bind.isDisableSettings(),
-                child: ActionIcon(
-                  message: 'Settings',
-                  icon: IconFont.menu,
-                  onTap: DesktopTabPage.onAddSetting,
-                  isClose: false,
+              tail: Obx(
+                () => Offstage(
+                  // The main window shows a minimal IT-support status screen
+                  // to non-logged-in employees (settings entry point hidden).
+                  // Once an admin logs in (gFFI.userModel.isLogin), the
+                  // normal settings entry point reappears.
+                  offstage: !gFFI.userModel.isLogin,
+                  child: ActionIcon(
+                    message: 'Settings',
+                    icon: IconFont.menu,
+                    onTap: DesktopTabPage.onAddSetting,
+                    isClose: false,
+                  ),
                 ),
               ),
             )));

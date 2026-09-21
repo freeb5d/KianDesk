@@ -24,6 +24,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:window_size/window_size.dart' as window_size;
 import '../widgets/button.dart';
+import 'desktop_status_page.dart';
 
 class DesktopHomePage extends StatefulWidget {
   const DesktopHomePage({Key? key}) : super(key: key);
@@ -58,6 +59,27 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    // DesktopHomePage is only ever mounted as the body of the normal
+    // end-user main window (DesktopType.main); all other window types
+    // (remote, file transfer, view camera, port forward, terminal, cm)
+    // are launched via separate screens in main.dart and never construct
+    // this widget. So it is safe to switch the entire body here without
+    // touching any other window type. The window/tray/tab-bar shell (from
+    // DesktopTabPage) and this widget's init/dispose plumbing (uni links,
+    // window listeners, periodic fetchID()) are left untouched.
+    //
+    // Default (not logged in as an admin): minimal Persian "IT support
+    // status" screen for ordinary employees.
+    // After an admin logs in via the low-visibility reveal on that screen
+    // (gFFI.userModel.isLogin becomes true, using the existing account
+    // login flow in common/widgets/login.dart), show the normal/full
+    // client UI (this is exactly what build() rendered before that
+    // change: the left pane + connection/peer-list right pane).
+    return Obx(() =>
+        gFFI.userModel.isLogin ? _buildFullClientUi(context) : const DesktopStatusPage());
+  }
+
+  Widget _buildFullClientUi(BuildContext context) {
     final isIncomingOnly = bind.isIncomingOnly();
     return _buildBlock(
         child: Row(
